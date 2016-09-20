@@ -1,2 +1,2 @@
 # hello-world
-Just a code grocery
+In this repository, inspiration and some temporary code will be saved.
