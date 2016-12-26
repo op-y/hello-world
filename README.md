@@ -1,4 +1,8 @@
-In this repository, inspiration and some temporary code will be saved.
+# Code Grocery
+configurations and demo.
 
-Content
-runit: a bash process launcher.
+## conf
+* vimrc
+
+## runit
+A bash shell test.
