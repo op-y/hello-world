@@ -6,7 +6,7 @@
  * We make no guarantees that this code is fit for any purpose. 
  * Visit http://www.pragmaticprogrammer.com/titles/dnvim for more book information.
 ***/
-var tally;
-for (tally=1; tally <= 10; tally++) {
-  // do something with tally
+var counter;
+for (counter=1; counter <= 10; counter++) {
+  // do something with counter
 };
