@@ -839,3 +839,10 @@ Tip 98：删除所有包含模式的文本行
 Tip 99：将TODO项收集至寄存器
 
 Tip 100：将CSS文件中所有规则的属性按照字母排序
+
+Tip 101：结识ctags
+
+```
+安装ctags
+brew install ctags
+```
