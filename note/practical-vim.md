@@ -846,3 +846,78 @@ Tip 101：结识ctags
 安装ctags
 brew install ctags
 ```
+
+Tip 102：配置Vim使用ctags
+
+```
+:set tags?  查看默认配置
+
+:!ctags -R  重建索引
+
+autocommand 允许我们在某个事件发生时调用一条命令
+:autocmd BufWritePost * call system("ctags -R")
+
+通过版本控制工具的回调机制自动执行ctags
+```
+
+Tip 103：使用Vim的标签跳转命令，浏览关键字的定义
+
+```
+<C-]> 光标将会从当前所在的关键字跳转到它到定义处
+<C-t> 命令后退
+
+g<C-]> 如果有多处匹配，该命令会从标签匹配列表中挑出可选项供我们选择，输入相应数字并按下<CR>就可以跳转到指定位置
+
+:tselect
+
+:tnext
+:tprev
+:tfirst
+:tlast
+
+使用Ex命令
+:tag {keyword}
+:tjump {keyword}
+:tag <Tab> 补全
+:tag/{pattern}
+:tjump/{pattern}
+```
+
+Tip 104：不用离开Vim也能编译代码
+
+```
+:make
+:make
+:cnext
+<C-o>
+```
+
+Tip 105：浏览Quickfix列表
+
+```
+:cnext
+:cprev
+:cfirst
+:clast
+:cnfile
+:cpfile
+:cc N
+:copen
+:cclose
+```
+
+Tip 106：回溯以前到Quickfix列表
+
+```
+:colder
+:cnewer
+```
+
+Tip 107：定制外部编译器
+
+```
+:setlocal ...
+:setglobal ...
+:compiler ...
+:args $VIMRUNTIME/compiler/*.vim
+```
