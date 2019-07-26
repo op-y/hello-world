@@ -921,3 +921,110 @@ Tip 107：定制外部编译器
 :compiler ...
 :args $VIMRUNTIME/compiler/*.vim
 ```
+Tip 108：不必离开Vim也能调用grep
+
+```
+:grep 不仅仅将结果显示出来，还会解析结果，并由此创建一个quickfix列表
+```
+
+Tip 109：定制grep程序
+
+```
+grepprg 选项
+grepformat 选项
+```
+
+Tip 110：使用Vim内部到grep
+
+```
+:vim[grep][!] /{pattern}/[g][j]{file}...
+```
+
+Tip 111：结识Vim到关键字自动补全
+
+```
+<C-n>
+<C-x><C-n>
+<C-x><C-i>
+<C-x><C-]>
+<C-x><C-k>
+<C-x><C-l>
+<C-x><C-f>
+<C-x><C-o>
+```
+
+Tip 112：与自动补全到弹出式菜单进行交互
+
+```
+<C-n>
+<C-p>
+<Down>
+<Up>
+<C-y>
+<C-e>
+<C-h> or <BS>
+<C-l>
+{char}
+```
+
+Tip 113：掌握关键字到来龙去脉
+
+Tip 114：使用字典中的单词进行自动补全
+
+```
+:set spell
+<C-x><C-k>
+```
+
+Tip 115：自动补全整行文本
+
+```
+<C-x><C-l>
+```
+
+Tip 116：自动补全文件名
+
+```
+:cd {path}
+<C-x><C-f>
+```
+
+Tip 117：根据上下文自动补全
+
+```
+<C-x><C-o>
+```
+
+Tip 118：对你的工作进行拼写检查
+
+```
+:set spell
+
+]s
+[s
+z=
+zg
+zw
+zug
+```
+
+Tip 119：使用其它拼写字典
+
+```
+spelllang 选项
+:set spelllang=en_us
+```
+
+Tip 120：将单词添加到拼写文件中
+
+```
+spellfile 选项
+:setlocal spellfile ...
+```
+
+Tip 121：在插入模式下更正拼写错误
+
+```
+<C-x>s
+<C-x><C-s>
+```
