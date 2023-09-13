@@ -4,6 +4,9 @@
 ## conf
 * .vimrc
 
+## grpc
+学习gRPC的demo
+
 ## letsgo
 一些golang的代码片段
 

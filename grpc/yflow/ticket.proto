@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package proto;
+
+service TicketInfo {
+    rpc createTicket(Ticket) returns (TicketID);
+    rpc getTicket(TicketID) returns (Ticket);
+}
+
+message Ticket {
+    int64 id = 1;
+    string creator = 2;
+    string note = 3;
+    string variable = 4;
+}
+
+message TicketID {
+    int64 id = 1;
+}
