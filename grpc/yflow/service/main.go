@@ -38,7 +38,19 @@ func (s *server) GetTicket(ctx context.Context, in *pb.TicketID) (*pb.Ticket, er
 		log.Printf("ticket %d : creator %s - retrieved.", ticket.Id, ticket.Creator)
 		return ticket, status.New(codes.OK, "").Err()
 	}
-	return nil, status.Errorf(codes.NotFound, "ticket does not exist.", in.Id)
+	return nil, status.Errorf(codes.NotFound, "ticket %d does not exist.", in.Id)
+}
+
+func (s *server) GetTickets(tr *pb.TicketRange, stream pb.TicketInfo_GetTicketsServer) error {
+	for id, ticket := range s.ticketMap {
+		if id > tr.Low && id < tr.High {
+			if err := stream.Send(ticket); err != nil {
+				log.Printf("ticket %d error sending message to stream: %s", ticket.Id, err.Error())
+			}
+			log.Printf("found ticket %d", ticket.Id)
+		}
+	}
+	return nil
 }
 
 func main() {

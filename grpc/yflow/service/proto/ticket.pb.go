@@ -147,6 +147,61 @@ func (x *TicketID) GetId() int64 {
 	return 0
 }
 
+type TicketRange struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Low  int64 `protobuf:"varint,1,opt,name=low,proto3" json:"low,omitempty"`
+	High int64 `protobuf:"varint,2,opt,name=high,proto3" json:"high,omitempty"`
+}
+
+func (x *TicketRange) Reset() {
+	*x = TicketRange{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ticket_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TicketRange) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TicketRange) ProtoMessage() {}
+
+func (x *TicketRange) ProtoReflect() protoreflect.Message {
+	mi := &file_ticket_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TicketRange.ProtoReflect.Descriptor instead.
+func (*TicketRange) Descriptor() ([]byte, []int) {
+	return file_ticket_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *TicketRange) GetLow() int64 {
+	if x != nil {
+		return x.Low
+	}
+	return 0
+}
+
+func (x *TicketRange) GetHigh() int64 {
+	if x != nil {
+		return x.High
+	}
+	return 0
+}
+
 var File_ticket_proto protoreflect.FileDescriptor
 
 var file_ticket_proto_rawDesc = []byte{
@@ -159,14 +214,21 @@ var file_ticket_proto_rawDesc = []byte{
 	0x08, 0x76, 0x61, 0x72, 0x69, 0x61, 0x62, 0x6c, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52,
 	0x08, 0x76, 0x61, 0x72, 0x69, 0x61, 0x62, 0x6c, 0x65, 0x22, 0x1a, 0x0a, 0x08, 0x54, 0x69, 0x63,
 	0x6b, 0x65, 0x74, 0x49, 0x44, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x03, 0x52, 0x02, 0x69, 0x64, 0x32, 0x69, 0x0a, 0x0a, 0x54, 0x69, 0x63, 0x6b, 0x65, 0x74, 0x49,
-	0x6e, 0x66, 0x6f, 0x12, 0x2e, 0x0a, 0x0c, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x54, 0x69, 0x63,
-	0x6b, 0x65, 0x74, 0x12, 0x0d, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x54, 0x69, 0x63, 0x6b,
-	0x65, 0x74, 0x1a, 0x0f, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x54, 0x69, 0x63, 0x6b, 0x65,
-	0x74, 0x49, 0x44, 0x12, 0x2b, 0x0a, 0x09, 0x67, 0x65, 0x74, 0x54, 0x69, 0x63, 0x6b, 0x65, 0x74,
-	0x12, 0x0f, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x54, 0x69, 0x63, 0x6b, 0x65, 0x74, 0x49,
-	0x44, 0x1a, 0x0d, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x54, 0x69, 0x63, 0x6b, 0x65, 0x74,
-	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x03, 0x52, 0x02, 0x69, 0x64, 0x22, 0x33, 0x0a, 0x0b, 0x54, 0x69, 0x63, 0x6b, 0x65, 0x74, 0x52,
+	0x61, 0x6e, 0x67, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x6c, 0x6f, 0x77, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x03, 0x52, 0x03, 0x6c, 0x6f, 0x77, 0x12, 0x12, 0x0a, 0x04, 0x68, 0x69, 0x67, 0x68, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x03, 0x52, 0x04, 0x68, 0x69, 0x67, 0x68, 0x32, 0x9c, 0x01, 0x0a, 0x0a, 0x54,
+	0x69, 0x63, 0x6b, 0x65, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x2e, 0x0a, 0x0c, 0x63, 0x72, 0x65,
+	0x61, 0x74, 0x65, 0x54, 0x69, 0x63, 0x6b, 0x65, 0x74, 0x12, 0x0d, 0x2e, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x2e, 0x54, 0x69, 0x63, 0x6b, 0x65, 0x74, 0x1a, 0x0f, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x2e, 0x54, 0x69, 0x63, 0x6b, 0x65, 0x74, 0x49, 0x44, 0x12, 0x2b, 0x0a, 0x09, 0x67, 0x65, 0x74,
+	0x54, 0x69, 0x63, 0x6b, 0x65, 0x74, 0x12, 0x0f, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x54,
+	0x69, 0x63, 0x6b, 0x65, 0x74, 0x49, 0x44, 0x1a, 0x0d, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e,
+	0x54, 0x69, 0x63, 0x6b, 0x65, 0x74, 0x12, 0x31, 0x0a, 0x0a, 0x67, 0x65, 0x74, 0x54, 0x69, 0x63,
+	0x6b, 0x65, 0x74, 0x73, 0x12, 0x12, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x54, 0x69, 0x63,
+	0x6b, 0x65, 0x74, 0x52, 0x61, 0x6e, 0x67, 0x65, 0x1a, 0x0d, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x2e, 0x54, 0x69, 0x63, 0x6b, 0x65, 0x74, 0x30, 0x01, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x33,
 }
 
 var (
@@ -181,18 +243,21 @@ func file_ticket_proto_rawDescGZIP() []byte {
 	return file_ticket_proto_rawDescData
 }
 
-var file_ticket_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_ticket_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_ticket_proto_goTypes = []interface{}{
-	(*Ticket)(nil),   // 0: proto.Ticket
-	(*TicketID)(nil), // 1: proto.TicketID
+	(*Ticket)(nil),      // 0: proto.Ticket
+	(*TicketID)(nil),    // 1: proto.TicketID
+	(*TicketRange)(nil), // 2: proto.TicketRange
 }
 var file_ticket_proto_depIdxs = []int32{
 	0, // 0: proto.TicketInfo.createTicket:input_type -> proto.Ticket
 	1, // 1: proto.TicketInfo.getTicket:input_type -> proto.TicketID
-	1, // 2: proto.TicketInfo.createTicket:output_type -> proto.TicketID
-	0, // 3: proto.TicketInfo.getTicket:output_type -> proto.Ticket
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
+	2, // 2: proto.TicketInfo.getTickets:input_type -> proto.TicketRange
+	1, // 3: proto.TicketInfo.createTicket:output_type -> proto.TicketID
+	0, // 4: proto.TicketInfo.getTicket:output_type -> proto.Ticket
+	0, // 5: proto.TicketInfo.getTickets:output_type -> proto.Ticket
+	3, // [3:6] is the sub-list for method output_type
+	0, // [0:3] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -228,6 +293,18 @@ func file_ticket_proto_init() {
 				return nil
 			}
 		}
+		file_ticket_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TicketRange); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -235,7 +312,7 @@ func file_ticket_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_ticket_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -263,6 +340,7 @@ const _ = grpc.SupportPackageIsVersion6
 type TicketInfoClient interface {
 	CreateTicket(ctx context.Context, in *Ticket, opts ...grpc.CallOption) (*TicketID, error)
 	GetTicket(ctx context.Context, in *TicketID, opts ...grpc.CallOption) (*Ticket, error)
+	GetTickets(ctx context.Context, in *TicketRange, opts ...grpc.CallOption) (TicketInfo_GetTicketsClient, error)
 }
 
 type ticketInfoClient struct {
@@ -291,10 +369,43 @@ func (c *ticketInfoClient) GetTicket(ctx context.Context, in *TicketID, opts ...
 	return out, nil
 }
 
+func (c *ticketInfoClient) GetTickets(ctx context.Context, in *TicketRange, opts ...grpc.CallOption) (TicketInfo_GetTicketsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_TicketInfo_serviceDesc.Streams[0], "/proto.TicketInfo/getTickets", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &ticketInfoGetTicketsClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type TicketInfo_GetTicketsClient interface {
+	Recv() (*Ticket, error)
+	grpc.ClientStream
+}
+
+type ticketInfoGetTicketsClient struct {
+	grpc.ClientStream
+}
+
+func (x *ticketInfoGetTicketsClient) Recv() (*Ticket, error) {
+	m := new(Ticket)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // TicketInfoServer is the server API for TicketInfo service.
 type TicketInfoServer interface {
 	CreateTicket(context.Context, *Ticket) (*TicketID, error)
 	GetTicket(context.Context, *TicketID) (*Ticket, error)
+	GetTickets(*TicketRange, TicketInfo_GetTicketsServer) error
 }
 
 // UnimplementedTicketInfoServer can be embedded to have forward compatible implementations.
@@ -306,6 +417,9 @@ func (*UnimplementedTicketInfoServer) CreateTicket(context.Context, *Ticket) (*T
 }
 func (*UnimplementedTicketInfoServer) GetTicket(context.Context, *TicketID) (*Ticket, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTicket not implemented")
+}
+func (*UnimplementedTicketInfoServer) GetTickets(*TicketRange, TicketInfo_GetTicketsServer) error {
+	return status.Errorf(codes.Unimplemented, "method GetTickets not implemented")
 }
 
 func RegisterTicketInfoServer(s *grpc.Server, srv TicketInfoServer) {
@@ -348,6 +462,27 @@ func _TicketInfo_GetTicket_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
+func _TicketInfo_GetTickets_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(TicketRange)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(TicketInfoServer).GetTickets(m, &ticketInfoGetTicketsServer{stream})
+}
+
+type TicketInfo_GetTicketsServer interface {
+	Send(*Ticket) error
+	grpc.ServerStream
+}
+
+type ticketInfoGetTicketsServer struct {
+	grpc.ServerStream
+}
+
+func (x *ticketInfoGetTicketsServer) Send(m *Ticket) error {
+	return x.ServerStream.SendMsg(m)
+}
+
 var _TicketInfo_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "proto.TicketInfo",
 	HandlerType: (*TicketInfoServer)(nil),
@@ -361,6 +496,12 @@ var _TicketInfo_serviceDesc = grpc.ServiceDesc{
 			Handler:    _TicketInfo_GetTicket_Handler,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "getTickets",
+			Handler:       _TicketInfo_GetTickets_Handler,
+			ServerStreams: true,
+		},
+	},
 	Metadata: "ticket.proto",
 }

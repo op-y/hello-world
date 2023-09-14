@@ -21,3 +21,11 @@ class TicketID(_message.Message):
     ID_FIELD_NUMBER: _ClassVar[int]
     id: int
     def __init__(self, id: _Optional[int] = ...) -> None: ...
+
+class TicketRange(_message.Message):
+    __slots__ = ["low", "high"]
+    LOW_FIELD_NUMBER: _ClassVar[int]
+    HIGH_FIELD_NUMBER: _ClassVar[int]
+    low: int
+    high: int
+    def __init__(self, low: _Optional[int] = ..., high: _Optional[int] = ...) -> None: ...
