@@ -2,6 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
+from google.protobuf import wrappers_pb2 as google_dot_protobuf_dot_wrappers__pb2
 import ticket_pb2 as ticket__pb2
 
 
@@ -29,6 +30,16 @@ class TicketInfoStub(object):
                 request_serializer=ticket__pb2.TicketRange.SerializeToString,
                 response_deserializer=ticket__pb2.Ticket.FromString,
                 )
+        self.updateTicket = channel.stream_unary(
+                '/proto.TicketInfo/updateTicket',
+                request_serializer=ticket__pb2.Ticket.SerializeToString,
+                response_deserializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
+                )
+        self.getTicketOneByOne = channel.stream_stream(
+                '/proto.TicketInfo/getTicketOneByOne',
+                request_serializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
+                response_deserializer=ticket__pb2.Ticket.FromString,
+                )
 
 
 class TicketInfoServicer(object):
@@ -52,6 +63,18 @@ class TicketInfoServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def updateTicket(self, request_iterator, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def getTicketOneByOne(self, request_iterator, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_TicketInfoServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -68,6 +91,16 @@ def add_TicketInfoServicer_to_server(servicer, server):
             'getTickets': grpc.unary_stream_rpc_method_handler(
                     servicer.getTickets,
                     request_deserializer=ticket__pb2.TicketRange.FromString,
+                    response_serializer=ticket__pb2.Ticket.SerializeToString,
+            ),
+            'updateTicket': grpc.stream_unary_rpc_method_handler(
+                    servicer.updateTicket,
+                    request_deserializer=ticket__pb2.Ticket.FromString,
+                    response_serializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
+            ),
+            'getTicketOneByOne': grpc.stream_stream_rpc_method_handler(
+                    servicer.getTicketOneByOne,
+                    request_deserializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
                     response_serializer=ticket__pb2.Ticket.SerializeToString,
             ),
     }
@@ -127,6 +160,40 @@ class TicketInfo(object):
             metadata=None):
         return grpc.experimental.unary_stream(request, target, '/proto.TicketInfo/getTickets',
             ticket__pb2.TicketRange.SerializeToString,
+            ticket__pb2.Ticket.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def updateTicket(request_iterator,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.stream_unary(request_iterator, target, '/proto.TicketInfo/updateTicket',
+            ticket__pb2.Ticket.SerializeToString,
+            google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def getTicketOneByOne(request_iterator,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.stream_stream(request_iterator, target, '/proto.TicketInfo/getTicketOneByOne',
+            google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
             ticket__pb2.Ticket.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

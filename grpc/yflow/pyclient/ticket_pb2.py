@@ -11,9 +11,10 @@ from google.protobuf.internal import builder as _builder
 _sym_db = _symbol_database.Default()
 
 
+from google.protobuf import wrappers_pb2 as google_dot_protobuf_dot_wrappers__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0cticket.proto\x12\x05proto\"E\n\x06Ticket\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x0f\n\x07\x63reator\x18\x02 \x01(\t\x12\x0c\n\x04note\x18\x03 \x01(\t\x12\x10\n\x08variable\x18\x04 \x01(\t\"\x16\n\x08TicketID\x12\n\n\x02id\x18\x01 \x01(\x03\"(\n\x0bTicketRange\x12\x0b\n\x03low\x18\x01 \x01(\x03\x12\x0c\n\x04high\x18\x02 \x01(\x03\x32\x9c\x01\n\nTicketInfo\x12.\n\x0c\x63reateTicket\x12\r.proto.Ticket\x1a\x0f.proto.TicketID\x12+\n\tgetTicket\x12\x0f.proto.TicketID\x1a\r.proto.Ticket\x12\x31\n\ngetTickets\x12\x12.proto.TicketRange\x1a\r.proto.Ticket0\x01\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0cticket.proto\x12\x05proto\x1a\x1egoogle/protobuf/wrappers.proto\"E\n\x06Ticket\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x0f\n\x07\x63reator\x18\x02 \x01(\t\x12\x0c\n\x04note\x18\x03 \x01(\t\x12\x10\n\x08variable\x18\x04 \x01(\t\"\x16\n\x08TicketID\x12\n\n\x02id\x18\x01 \x01(\x03\"(\n\x0bTicketRange\x12\x0b\n\x03low\x18\x01 \x01(\x03\x12\x0c\n\x04high\x18\x02 \x01(\x03\x32\xa1\x02\n\nTicketInfo\x12.\n\x0c\x63reateTicket\x12\r.proto.Ticket\x1a\x0f.proto.TicketID\x12+\n\tgetTicket\x12\x0f.proto.TicketID\x1a\r.proto.Ticket\x12\x31\n\ngetTickets\x12\x12.proto.TicketRange\x1a\r.proto.Ticket0\x01\x12=\n\x0cupdateTicket\x12\r.proto.Ticket\x1a\x1c.google.protobuf.StringValue(\x01\x12\x44\n\x11getTicketOneByOne\x12\x1c.google.protobuf.StringValue\x1a\r.proto.Ticket(\x01\x30\x01\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -21,12 +22,12 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'ticket_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _globals['_TICKET']._serialized_start=23
-  _globals['_TICKET']._serialized_end=92
-  _globals['_TICKETID']._serialized_start=94
-  _globals['_TICKETID']._serialized_end=116
-  _globals['_TICKETRANGE']._serialized_start=118
-  _globals['_TICKETRANGE']._serialized_end=158
-  _globals['_TICKETINFO']._serialized_start=161
-  _globals['_TICKETINFO']._serialized_end=317
+  _globals['_TICKET']._serialized_start=55
+  _globals['_TICKET']._serialized_end=124
+  _globals['_TICKETID']._serialized_start=126
+  _globals['_TICKETID']._serialized_end=148
+  _globals['_TICKETRANGE']._serialized_start=150
+  _globals['_TICKETRANGE']._serialized_end=190
+  _globals['_TICKETINFO']._serialized_start=193
+  _globals['_TICKETINFO']._serialized_end=482
 # @@protoc_insertion_point(module_scope)

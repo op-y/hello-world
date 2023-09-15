@@ -1,11 +1,15 @@
 syntax = "proto3";
 
+import "google/protobuf/wrappers.proto";
+
 package proto;
 
 service TicketInfo {
     rpc createTicket(Ticket) returns (TicketID);
     rpc getTicket(TicketID) returns (Ticket);
     rpc getTickets(TicketRange) returns (stream Ticket);
+	rpc updateTicket(stream Ticket) returns (google.protobuf.StringValue);
+	rpc getTicketOneByOne(stream google.protobuf.StringValue) returns (stream Ticket);
 }
 
 message Ticket {

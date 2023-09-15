@@ -14,6 +14,7 @@ import (
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 	reflect "reflect"
 	sync "sync"
 )
@@ -206,6 +207,8 @@ var File_ticket_proto protoreflect.FileDescriptor
 
 var file_ticket_proto_rawDesc = []byte{
 	0x0a, 0x0c, 0x74, 0x69, 0x63, 0x6b, 0x65, 0x74, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x05,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x77, 0x72, 0x61, 0x70, 0x70, 0x65, 0x72, 0x73, 0x2e,
 	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x62, 0x0a, 0x06, 0x54, 0x69, 0x63, 0x6b, 0x65, 0x74, 0x12,
 	0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x02, 0x69, 0x64, 0x12,
 	0x18, 0x0a, 0x07, 0x63, 0x72, 0x65, 0x61, 0x74, 0x6f, 0x72, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09,
@@ -217,7 +220,7 @@ var file_ticket_proto_rawDesc = []byte{
 	0x03, 0x52, 0x02, 0x69, 0x64, 0x22, 0x33, 0x0a, 0x0b, 0x54, 0x69, 0x63, 0x6b, 0x65, 0x74, 0x52,
 	0x61, 0x6e, 0x67, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x6c, 0x6f, 0x77, 0x18, 0x01, 0x20, 0x01, 0x28,
 	0x03, 0x52, 0x03, 0x6c, 0x6f, 0x77, 0x12, 0x12, 0x0a, 0x04, 0x68, 0x69, 0x67, 0x68, 0x18, 0x02,
-	0x20, 0x01, 0x28, 0x03, 0x52, 0x04, 0x68, 0x69, 0x67, 0x68, 0x32, 0x9c, 0x01, 0x0a, 0x0a, 0x54,
+	0x20, 0x01, 0x28, 0x03, 0x52, 0x04, 0x68, 0x69, 0x67, 0x68, 0x32, 0xa1, 0x02, 0x0a, 0x0a, 0x54,
 	0x69, 0x63, 0x6b, 0x65, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x2e, 0x0a, 0x0c, 0x63, 0x72, 0x65,
 	0x61, 0x74, 0x65, 0x54, 0x69, 0x63, 0x6b, 0x65, 0x74, 0x12, 0x0d, 0x2e, 0x70, 0x72, 0x6f, 0x74,
 	0x6f, 0x2e, 0x54, 0x69, 0x63, 0x6b, 0x65, 0x74, 0x1a, 0x0f, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
@@ -227,8 +230,16 @@ var file_ticket_proto_rawDesc = []byte{
 	0x54, 0x69, 0x63, 0x6b, 0x65, 0x74, 0x12, 0x31, 0x0a, 0x0a, 0x67, 0x65, 0x74, 0x54, 0x69, 0x63,
 	0x6b, 0x65, 0x74, 0x73, 0x12, 0x12, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x54, 0x69, 0x63,
 	0x6b, 0x65, 0x74, 0x52, 0x61, 0x6e, 0x67, 0x65, 0x1a, 0x0d, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x2e, 0x54, 0x69, 0x63, 0x6b, 0x65, 0x74, 0x30, 0x01, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x33,
+	0x2e, 0x54, 0x69, 0x63, 0x6b, 0x65, 0x74, 0x30, 0x01, 0x12, 0x3d, 0x0a, 0x0c, 0x75, 0x70, 0x64,
+	0x61, 0x74, 0x65, 0x54, 0x69, 0x63, 0x6b, 0x65, 0x74, 0x12, 0x0d, 0x2e, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x2e, 0x54, 0x69, 0x63, 0x6b, 0x65, 0x74, 0x1a, 0x1c, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
+	0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x53, 0x74, 0x72, 0x69, 0x6e,
+	0x67, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x28, 0x01, 0x12, 0x44, 0x0a, 0x11, 0x67, 0x65, 0x74, 0x54,
+	0x69, 0x63, 0x6b, 0x65, 0x74, 0x4f, 0x6e, 0x65, 0x42, 0x79, 0x4f, 0x6e, 0x65, 0x12, 0x1c, 0x2e,
+	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e,
+	0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x1a, 0x0d, 0x2e, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x2e, 0x54, 0x69, 0x63, 0x6b, 0x65, 0x74, 0x28, 0x01, 0x30, 0x01, 0x62, 0x06,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -245,19 +256,24 @@ func file_ticket_proto_rawDescGZIP() []byte {
 
 var file_ticket_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_ticket_proto_goTypes = []interface{}{
-	(*Ticket)(nil),      // 0: proto.Ticket
-	(*TicketID)(nil),    // 1: proto.TicketID
-	(*TicketRange)(nil), // 2: proto.TicketRange
+	(*Ticket)(nil),                 // 0: proto.Ticket
+	(*TicketID)(nil),               // 1: proto.TicketID
+	(*TicketRange)(nil),            // 2: proto.TicketRange
+	(*wrapperspb.StringValue)(nil), // 3: google.protobuf.StringValue
 }
 var file_ticket_proto_depIdxs = []int32{
 	0, // 0: proto.TicketInfo.createTicket:input_type -> proto.Ticket
 	1, // 1: proto.TicketInfo.getTicket:input_type -> proto.TicketID
 	2, // 2: proto.TicketInfo.getTickets:input_type -> proto.TicketRange
-	1, // 3: proto.TicketInfo.createTicket:output_type -> proto.TicketID
-	0, // 4: proto.TicketInfo.getTicket:output_type -> proto.Ticket
-	0, // 5: proto.TicketInfo.getTickets:output_type -> proto.Ticket
-	3, // [3:6] is the sub-list for method output_type
-	0, // [0:3] is the sub-list for method input_type
+	0, // 3: proto.TicketInfo.updateTicket:input_type -> proto.Ticket
+	3, // 4: proto.TicketInfo.getTicketOneByOne:input_type -> google.protobuf.StringValue
+	1, // 5: proto.TicketInfo.createTicket:output_type -> proto.TicketID
+	0, // 6: proto.TicketInfo.getTicket:output_type -> proto.Ticket
+	0, // 7: proto.TicketInfo.getTickets:output_type -> proto.Ticket
+	3, // 8: proto.TicketInfo.updateTicket:output_type -> google.protobuf.StringValue
+	0, // 9: proto.TicketInfo.getTicketOneByOne:output_type -> proto.Ticket
+	5, // [5:10] is the sub-list for method output_type
+	0, // [0:5] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -341,6 +357,8 @@ type TicketInfoClient interface {
 	CreateTicket(ctx context.Context, in *Ticket, opts ...grpc.CallOption) (*TicketID, error)
 	GetTicket(ctx context.Context, in *TicketID, opts ...grpc.CallOption) (*Ticket, error)
 	GetTickets(ctx context.Context, in *TicketRange, opts ...grpc.CallOption) (TicketInfo_GetTicketsClient, error)
+	UpdateTicket(ctx context.Context, opts ...grpc.CallOption) (TicketInfo_UpdateTicketClient, error)
+	GetTicketOneByOne(ctx context.Context, opts ...grpc.CallOption) (TicketInfo_GetTicketOneByOneClient, error)
 }
 
 type ticketInfoClient struct {
@@ -401,11 +419,78 @@ func (x *ticketInfoGetTicketsClient) Recv() (*Ticket, error) {
 	return m, nil
 }
 
+func (c *ticketInfoClient) UpdateTicket(ctx context.Context, opts ...grpc.CallOption) (TicketInfo_UpdateTicketClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_TicketInfo_serviceDesc.Streams[1], "/proto.TicketInfo/updateTicket", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &ticketInfoUpdateTicketClient{stream}
+	return x, nil
+}
+
+type TicketInfo_UpdateTicketClient interface {
+	Send(*Ticket) error
+	CloseAndRecv() (*wrapperspb.StringValue, error)
+	grpc.ClientStream
+}
+
+type ticketInfoUpdateTicketClient struct {
+	grpc.ClientStream
+}
+
+func (x *ticketInfoUpdateTicketClient) Send(m *Ticket) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *ticketInfoUpdateTicketClient) CloseAndRecv() (*wrapperspb.StringValue, error) {
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	m := new(wrapperspb.StringValue)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *ticketInfoClient) GetTicketOneByOne(ctx context.Context, opts ...grpc.CallOption) (TicketInfo_GetTicketOneByOneClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_TicketInfo_serviceDesc.Streams[2], "/proto.TicketInfo/getTicketOneByOne", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &ticketInfoGetTicketOneByOneClient{stream}
+	return x, nil
+}
+
+type TicketInfo_GetTicketOneByOneClient interface {
+	Send(*wrapperspb.StringValue) error
+	Recv() (*Ticket, error)
+	grpc.ClientStream
+}
+
+type ticketInfoGetTicketOneByOneClient struct {
+	grpc.ClientStream
+}
+
+func (x *ticketInfoGetTicketOneByOneClient) Send(m *wrapperspb.StringValue) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *ticketInfoGetTicketOneByOneClient) Recv() (*Ticket, error) {
+	m := new(Ticket)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // TicketInfoServer is the server API for TicketInfo service.
 type TicketInfoServer interface {
 	CreateTicket(context.Context, *Ticket) (*TicketID, error)
 	GetTicket(context.Context, *TicketID) (*Ticket, error)
 	GetTickets(*TicketRange, TicketInfo_GetTicketsServer) error
+	UpdateTicket(TicketInfo_UpdateTicketServer) error
+	GetTicketOneByOne(TicketInfo_GetTicketOneByOneServer) error
 }
 
 // UnimplementedTicketInfoServer can be embedded to have forward compatible implementations.
@@ -420,6 +505,12 @@ func (*UnimplementedTicketInfoServer) GetTicket(context.Context, *TicketID) (*Ti
 }
 func (*UnimplementedTicketInfoServer) GetTickets(*TicketRange, TicketInfo_GetTicketsServer) error {
 	return status.Errorf(codes.Unimplemented, "method GetTickets not implemented")
+}
+func (*UnimplementedTicketInfoServer) UpdateTicket(TicketInfo_UpdateTicketServer) error {
+	return status.Errorf(codes.Unimplemented, "method UpdateTicket not implemented")
+}
+func (*UnimplementedTicketInfoServer) GetTicketOneByOne(TicketInfo_GetTicketOneByOneServer) error {
+	return status.Errorf(codes.Unimplemented, "method GetTicketOneByOne not implemented")
 }
 
 func RegisterTicketInfoServer(s *grpc.Server, srv TicketInfoServer) {
@@ -483,6 +574,58 @@ func (x *ticketInfoGetTicketsServer) Send(m *Ticket) error {
 	return x.ServerStream.SendMsg(m)
 }
 
+func _TicketInfo_UpdateTicket_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(TicketInfoServer).UpdateTicket(&ticketInfoUpdateTicketServer{stream})
+}
+
+type TicketInfo_UpdateTicketServer interface {
+	SendAndClose(*wrapperspb.StringValue) error
+	Recv() (*Ticket, error)
+	grpc.ServerStream
+}
+
+type ticketInfoUpdateTicketServer struct {
+	grpc.ServerStream
+}
+
+func (x *ticketInfoUpdateTicketServer) SendAndClose(m *wrapperspb.StringValue) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *ticketInfoUpdateTicketServer) Recv() (*Ticket, error) {
+	m := new(Ticket)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func _TicketInfo_GetTicketOneByOne_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(TicketInfoServer).GetTicketOneByOne(&ticketInfoGetTicketOneByOneServer{stream})
+}
+
+type TicketInfo_GetTicketOneByOneServer interface {
+	Send(*Ticket) error
+	Recv() (*wrapperspb.StringValue, error)
+	grpc.ServerStream
+}
+
+type ticketInfoGetTicketOneByOneServer struct {
+	grpc.ServerStream
+}
+
+func (x *ticketInfoGetTicketOneByOneServer) Send(m *Ticket) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *ticketInfoGetTicketOneByOneServer) Recv() (*wrapperspb.StringValue, error) {
+	m := new(wrapperspb.StringValue)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 var _TicketInfo_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "proto.TicketInfo",
 	HandlerType: (*TicketInfoServer)(nil),
@@ -501,6 +644,17 @@ var _TicketInfo_serviceDesc = grpc.ServiceDesc{
 			StreamName:    "getTickets",
 			Handler:       _TicketInfo_GetTickets_Handler,
 			ServerStreams: true,
+		},
+		{
+			StreamName:    "updateTicket",
+			Handler:       _TicketInfo_UpdateTicket_Handler,
+			ClientStreams: true,
+		},
+		{
+			StreamName:    "getTicketOneByOne",
+			Handler:       _TicketInfo_GetTicketOneByOne_Handler,
+			ServerStreams: true,
+			ClientStreams: true,
 		},
 	},
 	Metadata: "ticket.proto",

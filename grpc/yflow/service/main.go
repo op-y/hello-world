@@ -2,12 +2,18 @@ package main
 
 import (
 	"context"
+	"fmt"
+	"io"
 	"log"
 	"math/rand"
 	"net"
 
+	"github.com/golang/protobuf/ptypes/wrappers"
+	"google.golang.org/genproto/googleapis/rpc/errdetails"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
+	_ "google.golang.org/grpc/encoding/gzip"
+	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
 
 	pb "yflow/service/proto"
@@ -23,6 +29,36 @@ type server struct {
 
 func (s *server) CreateTicket(ctx context.Context,
 	in *pb.Ticket) (*pb.TicketID, error) {
+
+	// mock deley
+	//time.Sleep(time.Second * 5)
+
+	if ctx.Err() == context.DeadlineExceeded {
+		log.Println("client deadline exceeded...")
+		return nil, ctx.Err()
+	}
+
+	if in.Creator == "expert" {
+		errStatus := status.New(codes.InvalidArgument, "creator expert not allowed")
+		ds, err := errStatus.WithDetails(
+			&errdetails.BadRequest_FieldViolation{
+				Field:       "Creator",
+				Description: "我们不接受专家创建工单！",
+			},
+		)
+		if err != nil {
+			return nil, errStatus.Err()
+		}
+		return nil, ds.Err()
+	}
+
+	md, ok := metadata.FromIncomingContext(ctx)
+	if ok {
+		for k, v := range md {
+			log.Printf("metadata %s:%v", k, v)
+		}
+	}
+
 	in.Id = rand.Int63n(99999999)
 	if s.ticketMap == nil {
 		s.ticketMap = make(map[int64]*pb.Ticket)
@@ -51,6 +87,51 @@ func (s *server) GetTickets(tr *pb.TicketRange, stream pb.TicketInfo_GetTicketsS
 		}
 	}
 	return nil
+}
+
+func (s *server) UpdateTicket(stream pb.TicketInfo_UpdateTicketServer) error {
+	ticket_ids := []int64{}
+	for {
+		ticket, err := stream.Recv()
+		if err == io.EOF {
+			result := "tickets updated: "
+			for _, id := range ticket_ids {
+				result = fmt.Sprintf("%s %d", result, id)
+			}
+			return stream.SendAndClose(
+				&wrappers.StringValue{Value: result})
+		}
+		s.ticketMap[ticket.Id] = ticket
+		ticket_ids = append(ticket_ids, ticket.Id)
+		log.Printf("ticket %d updated", ticket.Id)
+	}
+}
+
+func (s *server) GetTicketOneByOne(stream pb.TicketInfo_GetTicketOneByOneServer) error {
+	idx := 0
+	indice := []int64{}
+	for key := range s.ticketMap {
+		indice = append(indice, key)
+	}
+
+	for {
+		cmd, err := stream.Recv()
+		if err == io.EOF {
+			return nil
+		}
+		if err != nil {
+			return err
+		}
+		if cmd.Value != "next" {
+			return nil
+		}
+		if idx < len(indice) {
+			stream.Send(s.ticketMap[indice[idx]])
+			idx++
+		} else {
+			return nil
+		}
+	}
 }
 
 func main() {
