@@ -4,8 +4,11 @@
 ## conf
 * .vimrc
 
+## go-concurrency
+Go 并发编程学习
+
 ## grpc
-学习gRPC的demo
+gRPC 学习
 
 ## letsgo
 一些golang的代码片段
