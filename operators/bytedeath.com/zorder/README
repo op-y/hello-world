@@ -1,0 +1,11 @@
+这个项目是 controller-tools 的一个实验，和 code-generator 类似，controller-tools 也是一个代码生成工具。kubebuilder 生成代码就是使用的该工具，相对 code-generator 而言，controller-tools 可以用于生成 CRD/RBAC 等manifests文件（通过 type-scaffold 可以生成types.go的骨架）。对于 clientset/informer/lister 等，kubebuilder 使用了另一个库 controller-runtime 来处理。
+
+这里涉及到的内容
+
+* [controller-tools](https://github.com/kubernetes-sigs/controller-tools)
+* [kubebuilder](https://kubebuilder.io/reference/markers)
+
+实验过程种遇到的问题
+
+* 由于版本变换 +k8s 开头的tag已经不让使用了
+* +kubebuilder:object:generate 不会生成 DeepCopyObject 方法，但是 kubebuilder:object:root 可以

@@ -1,0 +1,7 @@
+apiVersion: zflowcontroller.bytedeath.com/v1
+kind: Ticket
+metadata:
+  name: example-ticket
+spec:
+  deploymentName: example-ticket
+  replicas: 1

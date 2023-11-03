@@ -1,0 +1,7 @@
+apiVersion: zorder.bytedeath.com/v1
+kind: Order
+metadata:
+  name: order-test
+spec:
+  name: userdemo
+  fee: 1

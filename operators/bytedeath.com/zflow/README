@@ -1,0 +1,12 @@
+这是一个使用 kubernetes code-generator 生成代码的实。使用到了几个东西：
+
+* [code-generator](https://github.com/kubernetes/code-generator/tree/master)
+* [sample-controller](https://github.com/kubernetes/sample-controller)
+
+code-generator 是生成工具，可以使用 `go install` 方式安装各个二进制工具然后单独使用，也可以使用 generate-groups.sh 脚本来协助生成代码。
+
+code-generator 底层是另一个 kubernetes 库，[gengo](https://github.com/kubernetes/gengo)，要弄清楚代码生成原理需要认真学习这个库。
+
+code-generator 代码生成依赖一些Tags，官方仓库的说明不多，只能查资料后者干脆看代码了。官方仓库推荐的一个文章是 [Kubernetes Deep Dive: Code Generation for CustomResources](https://cloud.redhat.com/blog/kubernetes-deep-dive-code-generation-customresources)
+
+此外这个实验还使用了官方的示例仓库 [sample-controller](https://github.com/kubernetes/sample-controller)，通过模仿项目结构，修改类型的定义，然后使用工具生成了代码。

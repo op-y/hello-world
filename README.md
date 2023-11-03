@@ -16,6 +16,9 @@ gRPC 学习
 ## note
 * 《Vim 实用技巧》笔记
 
+## operators
+kubernetes operator 开发的一些实验
+
 ## prometheus-instrumentation
 使用 Prometheus SDK 对 Go 应用进行监控
 
