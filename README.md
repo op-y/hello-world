@@ -1,6 +1,9 @@
 # Code Grocery
 杂货铺
 
+## apiservice
+kubernetes 自定义聚合apiserver示例
+
 ## conf
 * .vimrc
 
@@ -24,4 +27,7 @@ kubernetes operator 开发的一些实验
 
 ## runit
 A bash shell test.
+
+## scheduler
+kubernetes 自定义调度器插件示例
 
